@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesAplication.Data;
+using SalesAplication.SellerServices;
 
 namespace SalesAplication
 {
@@ -43,6 +44,7 @@ namespace SalesAplication
 
             // This method register SeedingService for dependency injection system
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
 
         }
 
