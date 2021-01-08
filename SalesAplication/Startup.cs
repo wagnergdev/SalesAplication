@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesAplication.Data;
 using SalesAplication.SellerServices;
+using SalesAplication.Services;
 
 namespace SalesAplication
 {
@@ -45,7 +46,7 @@ namespace SalesAplication
             // This method register SeedingService for dependency injection system
             services.AddScoped<SeedingService>();
             services.AddScoped<SellerService>();
-
+            services.AddScoped<DepartmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
