@@ -5,7 +5,7 @@ namespace SalesAplication.Models
 {
     public class SalesRecord
     {
-        public int SalesRecordId { get; set; }
+        public int Id { get; set; }
 
         public DateTime Date { get; set; }
 
@@ -20,9 +20,9 @@ namespace SalesAplication.Models
 
         }
 
-        public SalesRecord(int salesRecordId, DateTime date, double amount, SaleStatus status, Seller seller)
+        public SalesRecord(int id, DateTime date, double amount, SaleStatus status, Seller seller)
         {
-            SalesRecordId = salesRecordId;
+            Id = id;
             Date = date;
             Amount = amount;
             Status = status;

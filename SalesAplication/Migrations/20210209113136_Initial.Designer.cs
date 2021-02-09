@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SalesAplication.Data;
+using SalesAplication.Models;
 
 namespace SalesAplication.Migrations
 {
     [DbContext(typeof(SalesAplicationContext))]
-    [Migration("20210106044655_OtherEntities")]
-    partial class OtherEntities
+    [Migration("20210209113136_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,19 +21,19 @@ namespace SalesAplication.Migrations
 
             modelBuilder.Entity("SalesAplication.Models.Department", b =>
                 {
-                    b.Property<int>("DepartmentId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
-                    b.HasKey("DepartmentId");
+                    b.HasKey("Id");
 
                     b.ToTable("Department");
                 });
 
             modelBuilder.Entity("SalesAplication.Models.SalesRecord", b =>
                 {
-                    b.Property<int>("SalesRecordId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<double>("Amount");
@@ -44,7 +44,7 @@ namespace SalesAplication.Migrations
 
                     b.Property<int>("Status");
 
-                    b.HasKey("SalesRecordId");
+                    b.HasKey("Id");
 
                     b.HasIndex("SellerId");
 
@@ -53,20 +53,20 @@ namespace SalesAplication.Migrations
 
             modelBuilder.Entity("SalesAplication.Models.Seller", b =>
                 {
-                    b.Property<int>("SellerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<double>("BaseSalary");
 
                     b.Property<DateTime>("BirthDate");
 
-                    b.Property<int?>("DepartmentId");
+                    b.Property<int>("DepartmentId");
 
                     b.Property<string>("Email");
 
                     b.Property<string>("Name");
 
-                    b.HasKey("SellerId");
+                    b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
 
@@ -84,7 +84,8 @@ namespace SalesAplication.Migrations
                 {
                     b.HasOne("SalesAplication.Models.Department", "Department")
                         .WithMany("Sellers")
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

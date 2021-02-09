@@ -10,8 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SalesAplication.Models;
 using SalesAplication.Data;
-using SalesAplication.SellerServices;
 using SalesAplication.Services;
 
 namespace SalesAplication

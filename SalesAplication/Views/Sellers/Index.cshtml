@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SalesAplication.Models.Seller>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sellers";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -45,9 +45,9 @@
                 @Html.DisplayFor(modelItem => item.BaseSalary)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.SellerId">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.SellerId">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.SellerId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
         }

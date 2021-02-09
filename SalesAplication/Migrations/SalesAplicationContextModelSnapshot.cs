@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SalesAplication.Data;
+using SalesAplication.Models;
 
 namespace SalesAplication.Migrations
 {
@@ -19,19 +19,19 @@ namespace SalesAplication.Migrations
 
             modelBuilder.Entity("SalesAplication.Models.Department", b =>
                 {
-                    b.Property<int>("DepartmentId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
-                    b.HasKey("DepartmentId");
+                    b.HasKey("Id");
 
                     b.ToTable("Department");
                 });
 
             modelBuilder.Entity("SalesAplication.Models.SalesRecord", b =>
                 {
-                    b.Property<int>("SalesRecordId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<double>("Amount");
@@ -42,7 +42,7 @@ namespace SalesAplication.Migrations
 
                     b.Property<int>("Status");
 
-                    b.HasKey("SalesRecordId");
+                    b.HasKey("Id");
 
                     b.HasIndex("SellerId");
 
@@ -51,7 +51,7 @@ namespace SalesAplication.Migrations
 
             modelBuilder.Entity("SalesAplication.Models.Seller", b =>
                 {
-                    b.Property<int>("SellerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<double>("BaseSalary");
@@ -64,7 +64,7 @@ namespace SalesAplication.Migrations
 
                     b.Property<string>("Name");
 
-                    b.HasKey("SellerId");
+                    b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
 

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SalesAplication.Models;
 
-namespace SalesAplication.Data
+namespace SalesAplication.Models
 {
     public class SalesAplicationContext : DbContext
     {

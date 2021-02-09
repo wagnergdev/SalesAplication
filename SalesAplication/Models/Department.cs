@@ -9,7 +9,7 @@ namespace SalesAplication.Models
 {
     public class Department
     {
-        public int DepartmentId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
@@ -19,9 +19,9 @@ namespace SalesAplication.Models
 
         }
 
-        public Department(int departmentId, string name)
+        public Department(int id, string name)
         {
-            DepartmentId = departmentId;
+            Id = id;
             Name = name;
         }
 
