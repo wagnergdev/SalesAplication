@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SalesAplication.Models;
 using SalesAplication.Models.ViewModels;
-
+using SalesAplication.Services.Exceptions;
 
 namespace SalesAplication.Controllers
 {
@@ -80,6 +80,47 @@ namespace SalesAplication.Controllers
             }
 
             return View(obj);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();  
+            }
+
+            List<Department> departments = _departmentService.FindAll();
+            SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departments = departments };
+            return View(viewModel);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Seller seller)
+        {
+            //Verifica se o id do seller é diferente do id da URL da requisição
+            if (id != seller.Id)
+            {
+                return BadRequest();
+            }
+            try 
+            { 
+            _sellerService.Update(seller);
+            return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (DbConcurrencyException)
+            {
+                return BadRequest();
+            }
         }
     }
 }
